@@ -4,13 +4,36 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-
+ 
+var article={
+    title:"hello world",
+    heading:"first page",
+    date:"25 sept 1996",
+    content:"Code demo: Write some CSS",
+};
+function createhtml(data)
+{
+    var title=data.title;
+    var date=data.date;
+    var heading=data.heading;
+    var content=data.content;
+  var html=`
+  <html>
+  <title>${title}</title>
+  <head>${heading}</head>  
+  <body>
+  <h2>${date}</h2>
+  <h6>${content}</h6>
+  </body>
+  </html>`
+  return html;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('article1', function (req, res) {
-  res.send('hello world');
+  res.send(createhtml(article));
 });
 
 app.get('/ui/style.css', function (req, res) {
