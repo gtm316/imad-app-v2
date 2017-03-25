@@ -33,7 +33,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('article1', function (req, res) {
-  res.send(createhtml(article));
+ // res.send(createhtml(article));
+  res.send("helooo");
 });
 
 app.get('/ui/style.css', function (req, res) {
